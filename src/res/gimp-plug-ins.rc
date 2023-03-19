@@ -1,0 +1,35 @@
+#include <winver.h>
+
+#define _QUOTE(x) #x
+#define QUOTE(x) _QUOTE(x)
+
+#define VER_COMPANYNAME_STR         "Weeb Poly"
+
+#define VER_INTERNALNAME_STR        QUOTE(INTERNALNAME_STR)
+#define VER_ORIGINALFILENAME_STR    QUOTE(ORIGINALFILENAME_STR)
+
+VS_VERSION_INFO VERSIONINFO
+    FILEFLAGSMASK  	VS_FFI_FILEFLAGSMASK
+    FILEFLAGS      	(VS_FF_PRERELEASE|VS_FF_DEBUG)
+    FILEOS         	VOS__WINDOWS32
+    FILETYPE       	VFT_APP
+    FILESUBTYPE    	VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",      VER_COMPANYNAME_STR
+            VALUE "InternalName",     VER_INTERNALNAME_STR
+            VALUE "OriginalFilename", VER_ORIGINALFILENAME_STR
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#include "winuser.h"
+1 ICON "plug-ins.ico"
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "gimp.manifest"
